@@ -1,0 +1,1 @@
+java -jar selenium.jar & phpunit -c phpunit.xml

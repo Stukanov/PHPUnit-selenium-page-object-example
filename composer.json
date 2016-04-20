@@ -1,0 +1,16 @@
+{
+  "name": "stukanov/phpunit ",
+  "description": "Unit test example for PHP projects using selenium",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Stukanov Eugene",
+      "email": "stukanov.e@gmail.com"
+    }
+  ],
+  "require": {
+    "allure-framework/allure-phpunit": "1.2.2",
+    "facebook/webdriver": "1.1.1"
+  }
+}

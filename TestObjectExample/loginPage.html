@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to our login page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(e) {
+
+            $("form[ajax=true]").submit(function(e) {
+
+                e.preventDefault();
+
+                var form_data = $(this).serialize();
+                var form_url = $(this).attr("action");
+                var form_method = $(this).attr("method").toUpperCase();
+
+
+                $("#loadingimg").show();
+                $("input").attr("disabled","disabled");
+
+                $.ajax({
+                    url: form_url,
+                    type: form_method,
+                    data: form_data,
+                    cache: false,
+                    success: function(returnhtml){
+                        $("#result").html(returnhtml);
+                        $("#loadingimg").hide();
+                        $("input").removeAttr("disabled");
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</head>
+<style>
+    form {
+        top: 50%;
+        bottom: 50%;
+        left: 50%;
+        right: 50%;
+        position: fixed;
+    }
+</style>
+<body>
+<form action="backend.php" method="POST" ajax="true">
+    <input id="login" name="login" maxlength="10" required placeholder="login">
+    <br>
+    <input id="pass" name="pass" type="password" maxlength="10" required placeholder="password">
+    <br>
+    <input id="submit" type="submit" value="Log in">
+</form>
+<div id="result"></div>
+<img id="loadingimg" style="display: none" src="/TestObjectExample/load.gif">
+</>
+</html>
